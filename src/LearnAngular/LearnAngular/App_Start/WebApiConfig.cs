@@ -7,7 +7,8 @@ namespace LearnAngular
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            // Allow to use all domains to call the api
+            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -20,10 +21,6 @@ namespace LearnAngular
 
             // To return data in Json formatter
             config.Formatters.JsonFormatter.SupportedMediaTypes.Add(new System.Net.Http.Headers.MediaTypeHeaderValue("text/html"));
-
-            // Allow to use all domains to call the api
-            config.EnableCors(new EnableCorsAttribute("*", "*", "*"));
-
         }
     }
 }
